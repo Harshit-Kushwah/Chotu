@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Menu from './Nav'
-import Typet from './typect'
 export default class Typesrc extends Component {
     render() {
         return (
@@ -11,7 +10,7 @@ export default class Typesrc extends Component {
 <div className="row">
 	<div className="col-xl-12 p-0">
     <h1>Type Script</h1>
-<Typet/>
+
     </div>
 	</div>	
 	</div>
