@@ -39,11 +39,17 @@ function handleDisconnect() {
     }
   });
 }
+function clearConsole() { 
+    if(window.console || window.console.firebug) {
+       console.clear();
+    }
+}
 handleDisconnect();
 app.get('/get', (req, res) => {
     if (req) {
         connection.query(qu.getdt1, (err, nex) => {
             if (!err) {
+                clearConsole()
                 res.send(nex)
             } else
                 res.send("Error")
