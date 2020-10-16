@@ -43,6 +43,9 @@ app.get('/get', (req, res) => {
     } else
         console.log("Select Comand Error")
 })
+app.get("/",(req,res)=>{
+    res.json({"Hello":"Mianls"})
+})
 app.get('/get/:id', (req, res) => {
     if (req) {
         con.query(qu.getdt2, [req.params.id], (err, nex) => {
