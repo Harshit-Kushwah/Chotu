@@ -16,19 +16,37 @@ app.use(body.urlencoded({
 //     database: 'emp'
 // })
 
-const con = sql.createConnection({
+var con = {
     host: 'us-cdbr-east-02.cleardb.com',
     user: 'bb15502456e8c5',
     password: 'cfa9ff36',
     database: 'heroku_1f31d6bcc6474b1'
-})
+}
 
-con.connect((err) => {
-    if (!err)
-        console.log("Helloo")
-    else
-        console.log("sss")
-})
+var connection;
+
+function handleDisconnect() {
+  connection = sql.createConnection(con); // Recreate the connection, since
+                                                  // the old one cannot be reused.
+
+  connection.connect(function(err) {              // The server is either down
+    if(err) {                                     // or restarting (takes a while sometimes).
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+    }                                     // to avoid a hot loop, and to allow our node script to
+  });                                     // process asynchronous requests in the meantime.
+                                          // If you're also serving http, display a 503 error.
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+      handleDisconnect();                         // lost due to either server restart, or a
+    } else {                                      // connnection idle timeout (the wait_timeout
+      throw err;                                  // server variable configures this)
+    }
+  });
+}
+
+handleDisconnect();
 
 
 if (process.env.NODE_ENV === 'production') {
