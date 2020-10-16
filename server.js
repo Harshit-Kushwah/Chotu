@@ -49,7 +49,7 @@ app.get('/get', (req, res) => {
     if (req) {
         connection.query(qu.getdt1, (err, nex) => {
             if (!err) {
-                clearConsole()
+                
                 res.send(nex)
             } else
                 res.send("Error")
