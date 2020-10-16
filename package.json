@@ -22,6 +22,6 @@
 "client":"cd client && nmp start",
 "dev":"concurrently -n 'server,client' -c 'red,green' \"nodemon server.js\"\"npm run client\""
   },
-  "author": "Harshit",
+  "author": "Harshit Kushwah",
   "license": "ISC"
 }
