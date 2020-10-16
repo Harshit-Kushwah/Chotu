@@ -16,7 +16,7 @@ app.use(body.urlencoded({
 //     database: 'emp'
 // })
 
-var con = {
+const con = {
     host: 'us-cdbr-east-02.cleardb.com',
     user: 'bb15502456e8c5',
     password: 'cfa9ff36',
@@ -47,7 +47,17 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
-
+app.get('/get', (req, res) => {
+    if (req) {
+        connection.query(qu.getdt1, (err, nex) => {
+            if (!err) {
+                res.send(nex)
+            } else
+                res.send("Error")
+        })
+    } else
+        console.log("Select Comand Error")
+})
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
@@ -57,17 +67,17 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
-app.get("/",(req,res)=>{
-      app.use(express.static("client/build"))
-//    if(req){
-//       con.query(qu.getdt1,(err,nex)=>{
-//           res.send(nex)
-//       }) 
-//    }
-})
+// app.get("/",(req,res)=>{
+//       app.use(express.static("client/build"))
+// //    if(req){
+// //       con.query(qu.getdt1,(err,nex)=>{
+// //           res.send(nex)
+// //       }) 
+// //    }
+// })
 app.get('/get/:id', (req, res) => {
     if (req) {
-        con.query(qu.getdt2, [req.params.id], (err, nex) => {
+        connection.query(qu.getdt2, [req.params.id], (err, nex) => {
             if (!err) {
                 res.send(nex)
             } else
@@ -83,7 +93,7 @@ app.post("/post", (req, res) => {
         let a2 = req.body.age
         let a3 = req.body.city
      
-        con.query(qu.postdata + "('" + a1 + "','" + a2 + "','" + a3 + "')", (err, nex) => {
+        connection.query(qu.postdata + "('" + a1 + "','" + a2 + "','" + a3 + "')", (err, nex) => {
             if (!err) {
                   // console.log(req.body)
                 res.send("Post")
@@ -97,7 +107,7 @@ app.post("/post", (req, res) => {
 })
 app.delete("/del/:id", (req, res) => {
     if (req) {
-        con.query(qu.deletee, [req.params.id], (err, nex) => {
+        connection.query(qu.deletee, [req.params.id], (err, nex) => {
             if (!err) {
                 res.send("del")
             } else {
@@ -115,7 +125,7 @@ app.put("/update/:id", (req, res) => {
         let a1 = req.body.fnm;
         let a2 = req.body.age1
         let a3 = req.body.city1
-        con.query('update spi set fnm="' + a1 + '",Age="' + a2 + '",city="' + a3 + '" where id="' + a4 + '"', [req.params.id], (err, next) => {
+        connection.query('update spi set fnm="' + a1 + '",Age="' + a2 + '",city="' + a3 + '" where id="' + a4 + '"', [req.params.id], (err, next) => {
             if (!err) {
                 res.send("Update")
             } else {
