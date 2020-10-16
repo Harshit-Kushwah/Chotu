@@ -19,7 +19,7 @@
 "install-client": "cd client && npm install",
 "heroku-postbuild":"npm run install-client && npm run build",
 "start": "node server.js",
-"client":"cd client && nmp start",
+"client":"cd client && npm start",
 "dev":"concurrently -n 'server,client' -c 'red,green' \"nodemon server.js\"\"npm run client\""
   },
   "author": "Harshit Kushwah",
