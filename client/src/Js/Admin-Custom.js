@@ -22,3 +22,8 @@ $(function() {
         $("a[data-toggle='collapse']").toggleClass("borl");
     })
 });
+function clearConsole() { 
+    if(window.console || window.console.firebug) {
+       console.clear();
+    }
+}
