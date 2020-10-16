@@ -1,0 +1,6 @@
+export const user_get_req="user_get_req"
+export const user_get_suc="user_get_suc"
+export const user_get_err="user_get_err"
+export const user_get_post="user_get_post"
+export const user_get_del="user_get_del"
+export const user_get_up="user_get_up"

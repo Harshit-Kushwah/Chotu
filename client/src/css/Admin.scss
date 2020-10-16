@@ -1,0 +1,802 @@
+/* Spidey Gunnu sass --watch Hello.scss:my_style.css -t compact -c*/
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+blockquote,
+big,
+body,
+center,
+canvas,
+caption,
+cite,
+code,
+command,
+datalist,
+dd,
+del,
+details,
+dfn,
+dl,
+div,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+font,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+keygen,
+label,
+legend,
+li,
+meter,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+progress,
+q,
+s,
+samp,
+section,
+small,
+span,
+source,
+strike,
+strong,
+sub,
+sup,
+table,
+tbody,
+tfoot,
+thead,
+th,
+tr,
+tdvideo,
+tt,
+u,
+ul,
+var {
+    background: transparent;
+    border: 0 none;
+    outline: 0;
+}
+
+input:focus {
+    outline: none
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$srl1:#003f5e;
+$srl2:#fff;
+$imp:!important;
+$fn:'Roboto',
+sans-serif;
+$val:10px;
+$path:"../Images/Admin-images/";
+$dbg:#003f5e;
+@mixin bor($ed) {
+    border-radius: $ed
+}
+
+::-moz-selection {
+    color: #fff;
+    background: #2d75bb;
+}
+
+::selection {
+    color: #fff;
+    background: #2d75bb;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 04px;
+    background-color: $srl1;
+}
+
+::-webkit-scrollbar {
+    width: 07px;
+    background-color: $srl2;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 04px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: darken($srl1, 30%);
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: $fn $imp;
+    line-height: 18px;
+    text-align: justify;
+    font-size: 13px !important;
+    color: #000 !important;
+    background: #fff;
+    overflow-x: hidden;
+    /*user-select:none*/
+}
+
+tr,
+td {
+    vertical-align: top;
+    overflow: hidden;
+}
+
+ul,
+li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: $fn $imp;
+}
+
+
+/*Responsive Module Variable*/
+
+$lg:1200px;
+$tab:992px;
+$pam:768px;
+$mob:567px;
+
+/* Login Form  */
+
+@mixin gut() {
+    margin: 0px $imp;
+    padding: 0 $imp;
+}
+
+@mixin cen() {
+    display: table $imp;
+    width: auto $imp;
+    margin: 0px auto $imp;
+    float: none $imp;
+}
+
+@mixin hd() {
+    display: none $imp
+}
+
+.login {
+    background: url("#{$path}wae_login.png") no-repeat top center fixed;
+    background-size: cover;
+    position: fixed;
+    display: block;
+    width: 100% $imp;
+    height: 100%;
+    .col-xl-4:last-child {
+        background: $srl2;
+        height: 450px;
+        @include bor(07px);
+        border: #d7d7d7 01px solid;
+        /*&:before{content: ""; position: absolute;  width: 98%; height: 98%; @include bor(07px); top: -$val +4; left: -$val + 3; border-color: #e7e7e7; border-style: solid; border-width: 8px 0px 0px 8px;}*/
+        img {
+            position: relative;
+            top: -$val - 75;
+            z-index: 55
+        }
+        .borr {
+            h1 {
+                color: #003f5e;
+                font-size: $val +15;
+                font-weight: 700;
+                text-transform: uppercase;
+                position: relative;
+                &:before {
+                    content: "";
+                    border-left: 03px #003f5e solid;
+                    position: relative;
+                    left: -152px;
+                }
+            }
+            ;
+            +small {
+                color: #8f8a8a;
+                font-size: $val+4;
+                letter-spacing: 01px;
+                text-transform: uppercase;
+                font-weight: 700;
+                margin-bottom: $val*2
+            }
+        }
+        .he_ad {
+            position: relative;
+            top: -$val - 60;
+            input[type=text] {
+                border: 0 $imp;
+                padding: 0 $imp;
+                border-bottom: 01px #7E7E7E solid $imp;
+                @include bor(0px);
+                height: 28px;
+                padding-right: 25px $imp;
+                font-size: $val+3 $imp
+            }
+            .btn-primary {
+                // background: #003f5e url("#{$path}arrow.png") no-repeat 20% 50%;
+                width: 150px;
+                border: 0px;
+                text-transform: uppercase;
+                margin-top: $val*4 $imp;
+                padding-left: $val*2 $imp
+            }
+            label {
+                font-size: $val+3;
+                color: #0e2424;
+                font-weight: 700
+            }
+        }
+    }
+    .ad {
+        background: url("#{$path}adm.png") no-repeat right;
+    }
+    .pas {
+        background: url("#{$path}paas.png") no-repeat right;
+    }
+    .for_pas {
+        //  background:url("#{$path}pass-2.png") no-repeat 5px 50%;
+        line-height: 20px;
+        color: #000;
+        padding-left: $val*2+5
+    }
+}
+
+@media only screen and (max-width:$tab) {
+    .login {
+        .col-xl-4:nth-child(-n+2) {
+            display: none $imp;
+        }
+        .col-xl-4:last-child {
+            width: auto $imp;
+            display: table $imp;
+            margin: 0px auto $imp;
+            height: 150px $imp;
+            img {
+                top: 12px;
+                position: inherit $imp;
+                margin-bottom: $val+8 $imp
+            }
+            .he_ad {
+                position: inherit $imp;
+                top: 0 $imp
+            }
+            .pt-4 {
+                padding-top: $val+8 $imp;
+            }
+            small {
+                margin: 0 $imp
+            }
+            .form-group:last-child {
+                margin: 0px $imp
+            }
+            .text-right {
+                text-align: center $imp;
+                padding-bottom: $val
+            }
+            .he_ad .btn-primary {
+                margin-top: 22px $imp;
+            }
+            h1 {
+                &:before {
+                    content: none $imp;
+                }
+            }
+        }
+    }
+}
+
+
+/* Main Page */
+
+header {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    .col-xl-2:first-child {
+        background: $dbg;
+        border-bottom: 0px;
+        h1 {
+            color: $srl2;
+            font-size: 20px;
+            @include gut();
+            font-weight: 700;
+        }
+    }
+    .col-xl-4,
+    .col-xl-6 {
+        background: #fff;
+        border-bottom: 01px #cccccc solid
+    }
+    .col-xl-6 {
+        position: relative;
+        a {
+            position: absolute;
+            left: -20px;
+            top: 7px;
+            z-index: 999999
+        }
+        ul {
+            li {
+                float: left;
+                padding: 0px $val*2+8;
+                position: relative;
+                .badge {
+                    position: absolute;
+                    top: 09px;
+                    padding: 04px $val;
+                    background: $dbg $imp;
+                    left: 40px;
+                }
+                border-right: 01px #cccccc solid;
+                height: 57px;
+                display: flex;
+                &:last-child {}
+                img {
+                    align-self: center
+                }
+            }
+        }
+    }
+    .col-xl-4 {
+        &:last-child {
+            .navbar {
+                .navbar-nav .dropdown-menu {
+                    position: absolute $imp;
+                    top: 50px;
+                }
+                .dropdown-toggle:after {
+                    content: none $imp
+                }
+                a {
+                    color: #000 $imp;
+                    i {
+                        color: #000 $imp;
+                        position: relative;
+                        top: 5px;
+                        left: 05px;
+                    }
+                }
+                padding: 0 $imp;
+                img {
+                    margin-right: $val - 4
+                }
+                li {
+                    a {
+                        font-weight: 700
+                    }
+                    padding: 0px $val*2;
+                    &:first-child {
+                        display: flex;
+                        i {
+                            align-self: center;
+                            color: #ccc;
+                            font-size: $val*2
+                        }
+                        ;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.content {
+    .left_panel {
+        .le_srl {
+            height: 570px;
+            overflow-y: auto
+        }
+        position: fixed;
+        background: #293744;
+        width: 228px;
+        float: left;
+        height: 100%;
+        transition: all 0.5s 0s ease-in-out;
+        left: 0;
+        top: 0;
+        padding-top: 70px;
+        .user_panel {
+            h2 {
+                color: $srl2 $imp;
+                font-size: $val+6
+            }
+            h3 {
+                color: $srl2 $imp;
+                font-size: $val+2
+            }
+            p {
+                color: #8abe50 $imp;
+                padding-top: 03px;
+                @include gut();
+            }
+        }
+        .nav {
+            >li {
+                background: #33414e;
+                line-height: 25px;
+                border-bottom: 01px #253340 solid;
+                &:last-child {
+                    border: 0px;
+                }
+                a {
+                    color: #99abbc $imp;
+                    font-size: $val+4;
+                    font-weight: 500;
+                    img {
+                        margin-right: $val
+                    }
+                }
+                a[data-toggle="collapse"] {
+                    i {
+                        position: relative;
+                        right: -55%;
+                        font: {
+                            weight: 700
+                        }
+                    }
+                    +div ul {
+                        background: #293744 $imp;
+                        li {
+                            background: #293744 $imp;
+                            border: 0px;
+                            a {
+                                color: $srl2 $imp;
+                                font-size: $val+4 $imp;
+                                &:before {
+                                    content: url('#{$path}/menu_ad.png');
+                                    margin-right: 07px;
+                                    padding-right: 03px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .right_panel {
+        padding-top: 70px $imp;
+        position: relative;
+        width: calc(100% - 228px);
+        float: right;
+        background: #f1f1f1;
+        transition: all 0.5s 0s ease-in-out;
+        right: 0;
+        .week_per {
+            background: #e4e4e4;
+            font-size: $val+7
+        }
+        .dash {
+            padding-left: $val+6;
+            .col-xl-4:first-child {
+                .dash_bg {
+                    background: #f85a5a;
+                    margin: 0px $val - 5;
+                    @include bor(07px);
+                    h4 {
+                        color: $srl2;
+                        font-size: $val*2;
+                        small {
+                            font-weight: 700;
+                            font-size: $val*2+5
+                        }
+                    }
+                }
+            }
+            .col-xl-4:nth-child(2) {
+                .dash_bg {
+                    background: #b55959;
+                    margin: 0px $val - 5;
+                    @include bor(07px);
+                    h4 {
+                        color: $srl2;
+                        font-size: $val*2;
+                        small {
+                            font-weight: 700;
+                            font-size: $val*2+5
+                        }
+                    }
+                }
+            }
+            .col-xl-4:last-child {
+                .dash_bg {
+                    background: #dd6969;
+                    margin: 0px $val - 5;
+                    @include bor(07px);
+                    h4 {
+                        color: $srl2;
+                        font-size: $val*2;
+                        small {
+                            font-weight: 700;
+                            font-size: $val*2+5
+                        }
+                    }
+                }
+            }
+            .dash1 .col-xl-4:first-child {
+                .dash_bg {
+                    background: #ab4342;
+                    margin: 0px $val - 5;
+                    @include bor(07px);
+                    h4 {
+                        color: $srl2;
+                        font-size: $val*2;
+                        small {
+                            font-weight: 700;
+                            font-size: $val*2+5
+                        }
+                    }
+                }
+            }
+            .dash1 .col-xl-4:nth-child(2) {
+                .dash_bg {
+                    background: #d35656;
+                    margin: 0px $val - 5;
+                    @include bor(07px);
+                    h4 {
+                        color: $srl2;
+                        font-size: $val*2;
+                        small {
+                            font-weight: 700;
+                            font-size: $val*2+5
+                        }
+                    }
+                }
+            }
+            .dash1 .col-xl-4:last-child {
+                .dash_bg {
+                    background: #ff4040;
+                    margin: 0px $val - 5;
+                    @include bor(07px);
+                    h4 {
+                        color: $srl2;
+                        font-size: $val*2;
+                        small {
+                            font-weight: 700;
+                            font-size: $val*2+5
+                        }
+                    }
+                }
+            }
+        }
+        .blk .col .block_bg {
+            background: $srl2;
+            height: 150px;
+            span {
+                border: 01px #a3a3a3 solid;
+                @include bor(09px);
+                padding: 02px $val+2;
+                position: relative;
+                z-index: 99;
+                background: #fff $imp;
+                width: 100%;
+                &:after {
+                    content: "";
+                    border-bottom: 01px #a3a3a3 solid;
+                    position: absolute;
+                    display: block;
+                    width: 370%;
+                    top: 10px;
+                    z-index: -1;
+                    left: -92px;
+                    right: 0;
+                }
+            }
+            p {
+                font-weight: 700;
+                font-size: $val*1+9;
+                margin-top: 06px;
+                color: #666666;
+                strong {
+                    color: #ff5e3a;
+                    font-size: $val+5
+                }
+            }
+        }
+    }
+}
+
+.add_on {
+    .left_panel {
+        left: -228px;
+    }
+    .right_panel {
+        width: 100%
+    }
+}
+
+.anim {
+    transition: all 0.2s ease-in-out;
+    transform: scaleY(1.2) rotate(0deg)
+}
+
+.animm {
+    transform: rotate(90deg);
+    transition: all 0.2s ease-in-out;
+}
+
+.borl {
+    border-left: 02px #fff solid;
+    transition: all 0.3s linear;
+}
+
+@media only screen and(max-width:$lg) {
+    header {
+        .col-xl-4 {
+            .navbar {
+                width: auto $imp;
+            }
+            .ml-5 {
+                margin: 0px $imp;
+            }
+            .navbar-toggler {
+                position: relative $imp;
+                top: 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:$tab) {
+    .right_panel .dash .col-xl-4 h4 {
+        font-size: $val+6 $imp;
+        small {
+            font-size: $val+7 $imp;
+            font-weight: 100 $imp;
+        }
+    }
+    .content .right_panel .blk .col .block_bg span:after {
+        content: none $imp;
+    }
+    .map {
+        .p-0 {
+            padding: 0px 15px $imp;
+        }
+    }
+    .content {
+        .left_panel {
+            left: -228px;
+        }
+        .right_panel {
+            width: 100%
+        }
+    }
+    .off_can {
+        .left_panel {
+            left: 0px;
+        }
+        .right_panel {
+            width: calc(100% - 228px)
+        }
+    }
+}
+
+@media only screen and (max-width:$mob) {
+    header {
+        .col-xl-6 {
+            ul {
+                @include cen();
+                +a {
+                    position: absolute $imp;
+                    left: 89%;
+                    top: -40px;
+                }
+            }
+        }
+        .col-xl-4 {
+            .fixed-top {
+                position: inherit $imp
+            }
+        }
+        .col-xl-4 {
+            .pr-5 {
+                @include cen();
+                padding: 0px $imp
+            }
+        }
+    }
+    .content {
+        .left_panel {
+            top: 88px $imp
+        }
+        .right_panel {
+            top: 100px $imp
+        }
+    }
+}
+
+@media only screen and (max-width:$pam) {
+    .dash_bg {
+        .col:nth-child(2) {
+            @include hd();
+        }
+        .col {
+            padding: $val $imp;
+            text-align: center $imp;
+            h4 {
+                @include cen()
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:674px) {
+    .dash {
+        .col-sm-4 {
+            flex: none $imp;
+            max-width: inherit $imp;
+            margin-bottom: 07px;
+        }
+        .mt-2 {
+            margin: 0px $imp;
+        }
+    }
+    .blk {
+        .col {
+            flex-basis: auto $imp;
+            margin-bottom: 08px;
+        }
+        .p-0 {
+            padding: 0px 15px $imp;
+        }
+    }
+    .week_per {
+        text-align: center
+    }
+}
+
+#data_pl {
+    background: #fff;
+    padding: 15px !important;
+    height: 100%
+}
