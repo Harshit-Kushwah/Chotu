@@ -44,7 +44,7 @@ app.get('/get', (req, res) => {
         console.log("Select Comand Error")
 })
 app.get("/",(req,res)=>{
-    res.json({"Hello":"Mianls"})
+    res.sendFile("client/build/")
 })
 app.get('/get/:id', (req, res) => {
     if (req) {
