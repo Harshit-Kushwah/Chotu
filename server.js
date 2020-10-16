@@ -44,7 +44,7 @@ app.get('/get', (req, res) => {
         console.log("Select Comand Error")
 })
 app.get("/",(req,res)=>{
-    res.sendFile("client/build/index.html")
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 })
 app.get('/get/:id', (req, res) => {
     if (req) {
