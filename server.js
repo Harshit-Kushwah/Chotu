@@ -43,26 +43,7 @@ function handleDisconnect() {
 handleDisconnect();
 
 
-if (process.env.NODE_ENV === 'production') {
-// app.get('/', (req, res) => {
-//     if (req) {
-//         connection.query(qu.getdt1, (err, nex) => {
-//             if (!err) {
-                
-//                 res.send(nex)
-//             } else
-//                 res.send("Error")
-//         })
-//     } else
-//         console.log("Select Comand Error")
-// })    
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
-// Handle React routing, return all requests to React app
-  app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-}
+
 app.get('/get', (req, res) => {
     if (req) {
         conn.query(qu.getdt1, (err, nex) => {
@@ -136,6 +117,13 @@ app.put("/update/:id", (req, res) => {
         console.log(err)
     }
 })
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+// Handle React routing, return all requests to React app
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 var port =process.env.PORT || 4100
 app.listen(port, () => {
     console.log(`Connecting porting is ${port}`)
