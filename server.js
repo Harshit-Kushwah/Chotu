@@ -21,16 +21,16 @@ const con = {
     password: 'cfa9ff36',
     database: 'heroku_1f31d6bcc6474b1'
 }
-var connection;
+var conn;
 function handleDisconnect() {
-  connection = sql.createConnection(con);                                             
-  connection.connect(function(err) {             
+  conn = sql.createConnection(con);                                             
+  conn.connect(function(err) {             
     if(err) {                                   
       console.log('error when connecting to db:', err);
       setTimeout(handleDisconnect, 2000); 
     }                                   
   });                                
-  connection.on('error', function(err) {
+  conn.on('error', function(err) {
     console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
       handleDisconnect();                        
@@ -43,7 +43,7 @@ function handleDisconnect() {
 handleDisconnect();
 app.get('/get', (req, res) => {
     if (req) {
-        connection.query(qu.getdt1, (err, nex) => {
+        conn.query(qu.getdt1, (err, nex) => {
             if (!err) {
                 
                 res.send(nex)
@@ -76,7 +76,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 app.get('/get/:id', (req, res) => {
     if (req) {
-        connection.query(qu.getdt2, [req.params.id], (err, nex) => {
+        conn.query(qu.getdt2, [req.params.id], (err, nex) => {
             if (!err) {
                 res.send(nex)
             } else
@@ -92,7 +92,7 @@ app.post("/post", (req, res) => {
         let a2 = req.body.age
         let a3 = req.body.city
      
-        connection.query(qu.postdata + "('" + a1 + "','" + a2 + "','" + a3 + "')", (err, nex) => {
+        conn.query(qu.postdata + "('" + a1 + "','" + a2 + "','" + a3 + "')", (err, nex) => {
             if (!err) {
                   // console.log(req.body)
                 res.send("Post")
@@ -106,7 +106,7 @@ app.post("/post", (req, res) => {
 })
 app.delete("/del/:id", (req, res) => {
     if (req) {
-        connection.query(qu.deletee, [req.params.id], (err, nex) => {
+        conn.query(qu.deletee, [req.params.id], (err, nex) => {
             if (!err) {
                 res.send("del")
             } else {
@@ -124,7 +124,7 @@ app.put("/update/:id", (req, res) => {
         let a1 = req.body.fnm;
         let a2 = req.body.age1
         let a3 = req.body.city1
-        connection.query('update spi set fnm="' + a1 + '",Age="' + a2 + '",city="' + a3 + '" where id="' + a4 + '"', [req.params.id], (err, next) => {
+        conn.query('update spi set fnm="' + a1 + '",Age="' + a2 + '",city="' + a3 + '" where id="' + a4 + '"', [req.params.id], (err, next) => {
             if (!err) {
                 res.send("Update")
             } else {
