@@ -55,18 +55,24 @@ app.get('/get', (req, res) => {
 })
 
 if (process.env.NODE_ENV === 'production') {
-app.get('/', (req, res) => {
-    if (req) {
-        connection.query(qu.getdt1, (err, nex) => {
-            if (!err) {
+// app.get('/', (req, res) => {
+//     if (req) {
+//         connection.query(qu.getdt1, (err, nex) => {
+//             if (!err) {
                 
-                res.send(nex)
-            } else
-                res.send("Error")
-        })
-    } else
-        console.log("Select Comand Error")
-})
+//                 res.send(nex)
+//             } else
+//                 res.send("Error")
+//         })
+//     } else
+//         console.log("Select Comand Error")
+// })    
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+// Handle React routing, return all requests to React app
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
 }
 app.get('/get/:id', (req, res) => {
     if (req) {
