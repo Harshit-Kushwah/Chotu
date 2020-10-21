@@ -20,7 +20,7 @@ ab:[],age1:"",city1:"",id:"",fnm:"",
 axios.get('/get')
 .then((res)=>{
     this.setState({ab:res.data})
-    //console.log(res)
+    console.log(res)
 })
 .catch((err)=>{
     console.log("Error")
